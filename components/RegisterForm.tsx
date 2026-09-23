@@ -9,13 +9,13 @@ export function RegisterForm() {
     event.preventDefault();
     const form = event.currentTarget;
     const nameInput = form.elements.namedItem("name");
-    const emailInput = form.elements.namedItem("email");
+    const whatsappInput = form.elements.namedItem("whatsapp");
 
     if (!(nameInput instanceof HTMLInputElement)) return;
-    if (!(emailInput instanceof HTMLInputElement)) return;
+    if (!(whatsappInput instanceof HTMLInputElement)) return;
 
     nameInput.value = nameInput.value.trim().replace(/\s+/g, " ");
-    emailInput.value = emailInput.value.trim();
+    whatsappInput.value = whatsappInput.value.trim();
 
     if (!form.reportValidity()) return;
 
@@ -65,17 +65,20 @@ export function RegisterForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-semibold">
-            Email
+          <label htmlFor="whatsapp" className="mb-2 block text-sm font-semibold">
+            WhatsApp number
           </label>
           <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
+            id="whatsapp"
+            name="whatsapp"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
             required
-            maxLength={120}
-            placeholder="alex@email.com"
+            minLength={8}
+            maxLength={20}
+            placeholder="+62 812 3456 7890"
+            title="Enter a WhatsApp number, including the country code."
             className="h-12 w-full rounded-xl border border-white/35 bg-brand-ink px-4 text-base text-white transition duration-200 outline-none placeholder:text-accent-soft focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           />
         </div>

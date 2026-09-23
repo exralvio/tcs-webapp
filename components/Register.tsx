@@ -25,8 +25,8 @@ export function Register() {
             Register as a member
           </h2>
           <p className="mt-4 max-w-md text-lg leading-relaxed text-pretty">
-            Join the member network. Leave your name and email, and we&apos;ll
-            connect you with the next session and the people in it.
+            Join the member network. Leave your name and WhatsApp number, and
+            we&apos;ll connect you with the next session and the people in it.
           </p>
           <ul className="mt-8 space-y-3">
             {points.map((point) => (
