@@ -21,7 +21,8 @@ html:has(dialog[open]) {
   overflow: hidden;
 }
 
-dialog.member-dialog {
+dialog.member-dialog,
+dialog.activity-dialog {
   position: fixed;
   inset: auto;
   top: max(1.5rem, calc(50vh - 22rem));
@@ -31,6 +32,11 @@ dialog.member-dialog {
   margin: 0;
   transform: translateX(-50%);
   overflow: auto;
+}
+
+dialog.activity-dialog {
+  top: 1.5rem;
+  width: min(68rem, calc(100vw - 2rem));
 }
 
 body {
