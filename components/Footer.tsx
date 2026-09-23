@@ -1,3 +1,5 @@
+import { Logo } from "@/components/Logo";
+
 const socials = [
   {
     label: "Instagram",
@@ -55,7 +57,9 @@ export function Footer() {
     <footer className="bg-brand-ink text-white">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-lg font-semibold tracking-tight">TheCourtSociety</p>
+          <p className="text-lg font-semibold tracking-tight">
+            <Logo />
+          </p>
           <p className="mt-1 text-sm text-white">Badminton, together.</p>
         </div>
         <ul className="flex items-center gap-3">

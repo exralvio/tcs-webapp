@@ -1,3 +1,5 @@
+import { Logo } from "@/components/Logo";
+
 const linkClass =
   "text-sm font-medium text-white transition-colors duration-200 hover:text-accent focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
@@ -9,7 +11,7 @@ export function SiteHeader() {
           href="#top"
           className="text-sm font-semibold tracking-tight text-white transition-colors duration-200 hover:text-accent focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-base"
         >
-          TheCourtSociety
+          <Logo />
         </a>
         <nav aria-label="Primary" className="flex items-center gap-4 sm:gap-6">
           <a href="#showcase" className={linkClass}>
