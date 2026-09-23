@@ -28,7 +28,7 @@ export default async function MembersPage({ searchParams }: MembersPageProps) {
   return (
     <>
       <SiteHeader current="members" />
-      <main id="main" className="bg-brand-dark">
+      <main id="main" className="bg-brand-dark [overflow-anchor:none]">
         <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">

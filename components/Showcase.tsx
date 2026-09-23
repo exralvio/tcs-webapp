@@ -36,7 +36,7 @@ export function Showcase() {
     <section
       id="showcase"
       aria-labelledby="showcase-heading"
-      className="bg-brand-dark"
+      className="scroll-mt-4 bg-brand-dark"
     >
       <div className="mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:py-32">
         <div className="fade-up max-w-2xl">

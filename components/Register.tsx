@@ -11,7 +11,7 @@ export function Register() {
     <section
       id="register"
       aria-labelledby="register-heading"
-      className="bg-accent text-brand-ink"
+      className="scroll-mt-4 bg-accent text-brand-ink"
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
         <div className="fade-up">
