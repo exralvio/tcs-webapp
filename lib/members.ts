@@ -1,5 +1,6 @@
 export type Member = {
   id: string;
+  photo: string;
   fullName: string;
   age: number;
   bio: string;
@@ -25,6 +26,7 @@ export function membersHref(page: number, sort: "az" | "za", query = "") {
 export const members: Member[] = [
   {
     id: "TCS-1042",
+    photo: "/images/members/aisha-rahman.jpg",
     fullName: "Aisha Rahman",
     age: 34,
     occupation: "Architect",
@@ -39,6 +41,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1088",
+    photo: "/images/members/benito-cruz.jpg",
     fullName: "Benito Cruz",
     age: 41,
     occupation: "Sports coach",
@@ -53,6 +56,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1114",
+    photo: "/images/members/chloe-tan.jpg",
     fullName: "Chloe Tan",
     age: 29,
     occupation: "Product designer",
@@ -67,6 +71,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1130",
+    photo: "/images/members/daniel-okonkwo.jpg",
     fullName: "Daniel Okonkwo",
     age: 38,
     occupation: "Accountant",
@@ -81,6 +86,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1165",
+    photo: "/images/members/elena-vasquez.jpg",
     fullName: "Elena Vasquez",
     age: 32,
     occupation: "Event Organizer",
@@ -95,6 +101,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1182",
+    photo: "/images/members/farah-ibrahim.jpg",
     fullName: "Farah Ibrahim",
     age: 36,
     occupation: "Physiotherapist",
@@ -109,6 +116,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1207",
+    photo: "/images/members/gabriel-santos.jpg",
     fullName: "Gabriel Santos",
     age: 27,
     occupation: "Software engineer",
@@ -123,6 +131,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1221",
+    photo: "/images/members/hana-suzuki.jpg",
     fullName: "Hana Suzuki",
     age: 33,
     occupation: "Brand strategist",
@@ -137,6 +146,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1244",
+    photo: "/images/members/ivan-petrov.jpg",
     fullName: "Ivan Petrov",
     age: 45,
     occupation: "Restaurant owner",
@@ -151,6 +161,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1270",
+    photo: "/images/members/julia-nguyen.jpg",
     fullName: "Julia Nguyen",
     age: 31,
     occupation: "Teacher",
@@ -165,6 +176,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1296",
+    photo: "/images/members/kenji-watanabe.jpg",
     fullName: "Kenji Watanabe",
     age: 28,
     occupation: "Photographer",
@@ -179,6 +191,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1312",
+    photo: "/images/members/lila-mensah.jpg",
     fullName: "Lila Mensah",
     age: 39,
     occupation: "Founder",

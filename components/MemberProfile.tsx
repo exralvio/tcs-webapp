@@ -1,29 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useId, useRef, type MouseEvent } from "react";
 import type { Member } from "@/lib/members";
-
-const tones = [
-  "bg-accent text-brand",
-  "bg-accent-soft text-brand-ink",
-  "bg-brand text-accent",
-  "bg-brand-deep text-white",
-];
-
-function initials(fullName: string) {
-  return fullName
-    .split(" ")
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join("");
-}
-
-function toneFor(id: string) {
-  const index =
-    id.split("").reduce((sum, character) => sum + character.charCodeAt(0), 0) %
-    tones.length;
-  return tones[index];
-}
 
 export function MemberProfileButton({
   member,
@@ -36,7 +15,6 @@ export function MemberProfileButton({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
-  const tone = toneFor(member.id);
 
   function openProfile() {
     dialogRef.current?.showModal();
@@ -63,9 +41,15 @@ export function MemberProfileButton({
         >
           <span
             aria-hidden="true"
-            className={`grid h-16 w-16 shrink-0 place-items-center rounded-full text-lg font-semibold tracking-tight ring-accent transition duration-200 group-hover:ring-4 lg:h-36 lg:w-36 lg:text-3xl ${tone}`}
+            className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-accent transition duration-200 group-hover:ring-4 lg:h-36 lg:w-36"
           >
-            {initials(member.fullName)}
+            <Image
+              src={member.photo}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 144px, 64px"
+              className="object-cover"
+            />
           </span>
           <span className="min-w-0 lg:w-full">
             <span className="block text-sm font-semibold tracking-wide text-accent">
@@ -102,11 +86,14 @@ export function MemberProfileButton({
           </svg>
         </button>
         <div className="grid grid-cols-[8.5rem_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-8">
-          <span
-            aria-hidden="true"
-            className={`col-start-1 row-start-1 grid h-32 w-32 place-items-center justify-self-center rounded-full text-3xl font-semibold tracking-tight ring-4 ring-brand sm:h-44 sm:w-44 sm:text-4xl ${tone}`}
-          >
-            {initials(member.fullName)}
+          <span className="relative col-start-1 row-start-1 h-32 w-32 justify-self-center overflow-hidden rounded-full ring-4 ring-brand sm:h-44 sm:w-44">
+            <Image
+              src={member.photo}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 176px, 128px"
+              className="object-cover"
+            />
           </span>
           <div className="col-start-2 row-start-1 min-w-0 pr-12">
             <p className="text-sm font-semibold tracking-wide text-brand">
