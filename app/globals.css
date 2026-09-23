@@ -22,7 +22,8 @@ html:has(dialog[open]) {
 }
 
 dialog.member-dialog,
-dialog.activity-dialog {
+dialog.activity-dialog,
+dialog.join-dialog {
   position: fixed;
   inset: auto;
   top: max(1.5rem, calc(50vh - 22rem));
@@ -37,6 +38,11 @@ dialog.activity-dialog {
 dialog.activity-dialog {
   top: 1.5rem;
   width: min(68rem, calc(100vw - 2rem));
+}
+
+dialog.join-dialog {
+  top: max(1.5rem, calc(50vh - 14rem));
+  width: min(32rem, calc(100vw - 2rem));
 }
 
 body {

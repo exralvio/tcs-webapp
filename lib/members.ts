@@ -2,6 +2,7 @@ export type Member = {
   id: string;
   photo: string;
   fullName: string;
+  birthDate: string;
   age: number;
   bio: string;
   memberSince: string;
@@ -15,6 +16,8 @@ export type Member = {
 };
 
 export const PAGE_SIZE = 6;
+export const PREVIEW_COUNT = 4;
+export const MEMBER_COOKIE = "tcs-member";
 
 export function membersHref(page: number, sort: "az" | "za", query = "") {
   const params = new URLSearchParams({ sort, page: String(page) });
@@ -28,6 +31,7 @@ export const members: Member[] = [
     id: "TCS-1042",
     photo: "/images/members/aisha-rahman.jpg",
     fullName: "Aisha Rahman",
+    birthDate: "1992-03-12",
     age: 34,
     occupation: "Architect",
     level: "Intermediate",
@@ -43,6 +47,7 @@ export const members: Member[] = [
     id: "TCS-1088",
     photo: "/images/members/benito-cruz.jpg",
     fullName: "Benito Cruz",
+    birthDate: "1985-01-04",
     age: 41,
     occupation: "Sports coach",
     level: "Advanced",
@@ -58,6 +63,7 @@ export const members: Member[] = [
     id: "TCS-1114",
     photo: "/images/members/chloe-tan.jpg",
     fullName: "Chloe Tan",
+    birthDate: "1997-01-20",
     age: 29,
     occupation: "Product designer",
     level: "Intermediate",
@@ -73,6 +79,7 @@ export const members: Member[] = [
     id: "TCS-1130",
     photo: "/images/members/daniel-okonkwo.jpg",
     fullName: "Daniel Okonkwo",
+    birthDate: "1988-08-02",
     age: 38,
     occupation: "Accountant",
     level: "Beginner",
@@ -88,6 +95,7 @@ export const members: Member[] = [
     id: "TCS-1165",
     photo: "/images/members/elena-vasquez.jpg",
     fullName: "Elena Vasquez",
+    birthDate: "1994-06-15",
     age: 32,
     occupation: "Event Organizer",
     level: "Intermediate",
@@ -103,6 +111,7 @@ export const members: Member[] = [
     id: "TCS-1182",
     photo: "/images/members/farah-ibrahim.jpg",
     fullName: "Farah Ibrahim",
+    birthDate: "1990-02-28",
     age: 36,
     occupation: "Physiotherapist",
     level: "Advanced",
@@ -118,6 +127,7 @@ export const members: Member[] = [
     id: "TCS-1207",
     photo: "/images/members/gabriel-santos.jpg",
     fullName: "Gabriel Santos",
+    birthDate: "1999-02-09",
     age: 27,
     occupation: "Software engineer",
     level: "Intermediate",
@@ -133,6 +143,7 @@ export const members: Member[] = [
     id: "TCS-1221",
     photo: "/images/members/hana-suzuki.jpg",
     fullName: "Hana Suzuki",
+    birthDate: "1993-04-01",
     age: 33,
     occupation: "Brand strategist",
     level: "Intermediate",
@@ -148,6 +159,7 @@ export const members: Member[] = [
     id: "TCS-1244",
     photo: "/images/members/ivan-petrov.jpg",
     fullName: "Ivan Petrov",
+    birthDate: "1981-09-18",
     age: 45,
     occupation: "Restaurant owner",
     level: "Beginner",
@@ -163,6 +175,7 @@ export const members: Member[] = [
     id: "TCS-1270",
     photo: "/images/members/julia-nguyen.jpg",
     fullName: "Julia Nguyen",
+    birthDate: "1995-05-21",
     age: 31,
     occupation: "Teacher",
     level: "Intermediate",
@@ -178,6 +191,7 @@ export const members: Member[] = [
     id: "TCS-1296",
     photo: "/images/members/kenji-watanabe.jpg",
     fullName: "Kenji Watanabe",
+    birthDate: "1998-04-22",
     age: 28,
     occupation: "Photographer",
     level: "Advanced",
@@ -193,6 +207,7 @@ export const members: Member[] = [
     id: "TCS-1312",
     photo: "/images/members/lila-mensah.jpg",
     fullName: "Lila Mensah",
+    birthDate: "1987-01-16",
     age: 39,
     occupation: "Founder",
     level: "Intermediate",
@@ -226,6 +241,16 @@ export function formatMemberSince(isoDate: string) {
   return `${months[Number(month) - 1]} ${year}`;
 }
 
+export function formatBirthDate(isoDate: string) {
+  const [year, month, day] = isoDate.split("-");
+  return `${Number(day)} ${months[Number(month) - 1]} ${year}`;
+}
+
+export function findMember(memberId: string, birthDate: string) {
+  const id = memberId.trim().toLocaleUpperCase();
+  return members.find((member) => member.id === id && member.birthDate === birthDate);
+}
+
 function timeAgo(amount: number, unit: string) {
   return `${amount} ${unit}${amount === 1 ? "" : "s"} ago`;
 }
@@ -249,15 +274,19 @@ export function formatLastPlay(isoDate: string, now = new Date()) {
   return timeAgo(Math.floor(days / 365), "year");
 }
 
-export function getMemberPage(sort: "az" | "za", page: number, query = "") {
+export function getMembers(sort: "az" | "za", query = "") {
   const name = query.trim().toLocaleLowerCase();
   const matched = name
     ? members.filter((member) => member.fullName.toLocaleLowerCase().includes(name))
     : members;
-  const sorted = [...matched].sort((a, b) => {
+  return [...matched].sort((a, b) => {
     const order = a.fullName.localeCompare(b.fullName);
     return sort === "za" ? -order : order;
   });
+}
+
+export function getMemberPage(sort: "az" | "za", page: number, query = "") {
+  const sorted = getMembers(sort, query);
   const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
   const currentPage =
     totalPages === 0 ? 1 : Math.min(Math.max(page, 1), totalPages);
