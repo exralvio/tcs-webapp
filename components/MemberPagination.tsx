@@ -15,12 +15,14 @@ export function MemberPagination({
   page,
   totalPages,
   sort,
+  query,
   showing,
   total,
 }: {
   page: number;
   totalPages: number;
   sort: "az" | "za";
+  query: string;
   showing: number;
   total: number;
 }) {
@@ -45,7 +47,7 @@ export function MemberPagination({
           return (
             <li key={number}>
               <Link
-                href={membersHref(number, sort)}
+                href={membersHref(number, sort, query)}
                 scroll={false}
                 aria-label={`Page ${number}`}
                 aria-current={current ? "page" : undefined}

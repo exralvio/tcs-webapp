@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { MemberCard } from "@/components/MemberCard";
 import { MemberPagination } from "@/components/MemberPagination";
+import { MemberSearch } from "@/components/MembersNameSearch";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getMemberPage, membersHref } from "@/lib/members";
 
@@ -13,15 +14,16 @@ export const metadata: Metadata = {
 };
 
 type MembersPageProps = {
-  searchParams: Promise<{ page?: string; sort?: string }>;
+  searchParams: Promise<{ page?: string; sort?: string; q?: string }>;
 };
 
 export default async function MembersPage({ searchParams }: MembersPageProps) {
   const params = await searchParams;
   const sort = params.sort === "za" ? "za" : "az";
+  const query = params.q?.trim() ?? "";
   const requestedPage = Number(params.page);
   const pageNumber = Number.isFinite(requestedPage) ? requestedPage : 1;
-  const { members, page, totalPages, total } = getMemberPage(sort, pageNumber);
+  const { members, page, totalPages, total } = getMemberPage(sort, pageNumber, query);
 
   return (
     <>
@@ -51,7 +53,7 @@ export default async function MembersPage({ searchParams }: MembersPageProps) {
                 className="inline-flex rounded-full bg-brand-ink p-1 ring-1 ring-white/20"
               >
                 <Link
-                  href={membersHref(1, "az")}
+                  href={membersHref(1, "az", query)}
                   scroll={false}
                   aria-current={sort === "az" ? "true" : undefined}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
@@ -63,7 +65,7 @@ export default async function MembersPage({ searchParams }: MembersPageProps) {
                   A–Z
                 </Link>
                 <Link
-                  href={membersHref(1, "za")}
+                  href={membersHref(1, "za", query)}
                   scroll={false}
                   aria-current={sort === "za" ? "true" : undefined}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
@@ -78,18 +80,27 @@ export default async function MembersPage({ searchParams }: MembersPageProps) {
             </div>
           </div>
 
-          <ul className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
-            {members.map((member) => (
-              <li key={member.id}>
-                <MemberCard member={member} />
-              </li>
-            ))}
-          </ul>
+          <MemberSearch key={query} query={query} sort={sort} />
+
+          {members.length === 0 ? (
+            <p className="mt-12 rounded-3xl bg-brand-ink px-6 py-10 text-center text-lg text-white ring-1 ring-white/15">
+              No members match {query}.
+            </p>
+          ) : (
+            <ul className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-1">
+              {members.map((member) => (
+                <li key={member.id}>
+                  <MemberCard member={member} />
+                </li>
+              ))}
+            </ul>
+          )}
 
           <MemberPagination
             page={page}
             totalPages={totalPages}
             sort={sort}
+            query={query}
             showing={members.length}
             total={total}
           />

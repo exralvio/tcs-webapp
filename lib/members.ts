@@ -15,8 +15,10 @@ export type Member = {
 
 export const PAGE_SIZE = 6;
 
-export function membersHref(page: number, sort: "az" | "za") {
+export function membersHref(page: number, sort: "az" | "za", query = "") {
   const params = new URLSearchParams({ sort, page: String(page) });
+  const name = query.trim();
+  if (name) params.set("q", name);
   return `/members?${params.toString()}`;
 }
 
@@ -234,13 +236,18 @@ export function formatLastPlay(isoDate: string, now = new Date()) {
   return timeAgo(Math.floor(days / 365), "year");
 }
 
-export function getMemberPage(sort: "az" | "za", page: number) {
-  const sorted = [...members].sort((a, b) => {
+export function getMemberPage(sort: "az" | "za", page: number, query = "") {
+  const name = query.trim().toLocaleLowerCase();
+  const matched = name
+    ? members.filter((member) => member.fullName.toLocaleLowerCase().includes(name))
+    : members;
+  const sorted = [...matched].sort((a, b) => {
     const order = a.fullName.localeCompare(b.fullName);
     return sort === "za" ? -order : order;
   });
   const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
-  const currentPage = Math.min(Math.max(page, 1), totalPages);
+  const currentPage =
+    totalPages === 0 ? 1 : Math.min(Math.max(page, 1), totalPages);
   const start = (currentPage - 1) * PAGE_SIZE;
 
   return {
