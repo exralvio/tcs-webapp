@@ -61,7 +61,7 @@ export function Footer() {
             <Logo />
           </p>
           <p className="mt-1 text-sm text-white">
-            Network. Play. Find what's next.
+            Network. Play. Find what&apos;s next.
           </p>
         </div>
         <ul className="flex items-center gap-3">
