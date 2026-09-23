@@ -36,7 +36,8 @@ export function RegisterForm() {
           Thanks, {successName}.
         </p>
         <p className="mt-4 max-w-sm text-lg leading-relaxed text-white">
-          You&apos;re registered. Watch your inbox for the next court time.
+          You&apos;re registered. We&apos;ll be in touch about the next chance
+          to meet members.
         </p>
       </div>
     );

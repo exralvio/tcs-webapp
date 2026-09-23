@@ -60,7 +60,9 @@ export function Footer() {
           <p className="text-lg font-semibold tracking-tight">
             <Logo />
           </p>
-          <p className="mt-1 text-sm text-white">Badminton, together.</p>
+          <p className="mt-1 text-sm text-white">
+            Network. Play. Find what's next.
+          </p>
         </div>
         <ul className="flex items-center gap-3">
           {socials.map((social) => (

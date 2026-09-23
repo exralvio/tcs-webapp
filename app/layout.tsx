@@ -9,9 +9,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "TheCourtSociety — Badminton community",
+  title: "TheCourtSociety — Connect on the court",
   description:
-    "TheCourtSociety is a badminton community for open play, friendly doubles, and players of every level. Register to join the next session.",
+    "TheCourtSociety is a badminton community that empowers members to network with each other and find new opportunities.",
 };
 
 export const viewport: Viewport = {

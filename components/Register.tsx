@@ -1,9 +1,9 @@
 import { RegisterForm } from "@/components/RegisterForm";
 
 const points = [
-  "Next session details by email",
-  "Open to every level",
-  "One short form, then just show up",
+  "Network with members across the community",
+  "Find opportunities through the people you play with",
+  "Meet someone new at the next session",
 ];
 
 export function Register() {
@@ -25,8 +25,8 @@ export function Register() {
             Register as a member
           </h2>
           <p className="mt-4 max-w-md text-lg leading-relaxed text-pretty">
-            Leave your name and email. We&apos;ll send the next session time
-            and how to join your first game.
+            Join the member network. Leave your name and email, and we&apos;ll
+            connect you with the next session and the people in it.
           </p>
           <ul className="mt-8 space-y-3">
             {points.map((point) => (

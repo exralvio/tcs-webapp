@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const notes = ["Open sessions", "All levels", "Friendly doubles"];
+const notes = ["Member network", "New opportunities", "Real connections"];
 
 export function Hero() {
   return (
@@ -18,13 +18,12 @@ export function Hero() {
             id="hero-heading"
             className="rise-in mt-4 max-w-xl text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-white [animation-delay:80ms]"
           >
-            Welcome to the
+            Connect on the
             <span className="block text-accent">court.</span>
           </h1>
           <p className="rise-in mt-6 max-w-xl text-lg leading-relaxed text-pretty text-white [animation-delay:160ms]">
-            TheCourtSociety is a badminton community for players of every
-            level. Come for open sessions, friendly doubles, and the people who
-            make the game feel like home.
+            TheCourtSociety empowers members to network with each other. Play
+            together, meet the right people, and find new opportunities.
           </p>
           <div className="rise-in mt-8 [animation-delay:240ms]">
             <a
