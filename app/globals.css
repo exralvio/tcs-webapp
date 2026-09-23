@@ -17,6 +17,22 @@ html {
   background: #0039c8;
 }
 
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog.member-dialog {
+  position: fixed;
+  inset: auto;
+  top: max(1.5rem, calc(50vh - 22rem));
+  left: 50%;
+  width: min(52rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 3rem);
+  margin: 0;
+  transform: translateX(-50%);
+  overflow: auto;
+}
+
 body {
   background: #0039c8;
   color: #ffffff;
