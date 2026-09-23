@@ -83,7 +83,7 @@ export function Footer() {
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-5 text-sm text-white sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>© {year} TheCourtSociety</p>
-          <p>Photos: Unsplash, Pexels, and Wikimedia Commons.</p>
+          <p>Developed by <a href="https://exralvio.github.io/portfolio/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">ALV PROJECTS</a></p>
         </div>
       </div>
     </footer>
