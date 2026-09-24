@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ActivityCard } from "@/components/ActivityCard";
+import { ActivityPost } from "@/components/ActivityPost";
 import { Footer } from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { activities } from "@/lib/activities";
@@ -30,7 +30,7 @@ export default function ActivitiesPage() {
           <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {activities.map((activity) => (
               <li key={activity.slug}>
-                <ActivityCard activity={activity} />
+                <ActivityPost activity={activity} />
               </li>
             ))}
           </ul>

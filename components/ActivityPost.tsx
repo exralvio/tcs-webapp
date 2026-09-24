@@ -1,19 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useId, useRef, type MouseEvent } from "react";
+import { useId, useRef, useState, type MouseEvent } from "react";
 import {
   formatActivityDate,
   photoCountLabel,
   type Activity,
 } from "@/lib/activities";
 
-export function ActivityCard({ activity }: { activity: Activity }) {
+export function ActivityPost({ activity }: { activity: Activity }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  const [selected, setSelected] = useState(0);
   const main = activity.images[0];
+  const current = activity.images[selected] ?? main;
 
   function openGallery() {
+    setSelected(0);
     dialogRef.current?.showModal();
   }
 
@@ -95,29 +98,43 @@ export function ActivityCard({ activity }: { activity: Activity }) {
             <p className="text-sm text-white">{photoCountLabel(activity.images.length)}</p>
           </div>
         </div>
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {activity.images.map((image, index) => (
-            <li key={image.src} className={index === 0 ? "sm:col-span-2" : undefined}>
-              <div
-                className={`relative overflow-hidden rounded-2xl bg-brand-dark ring-1 ring-white/15 ${
-                  index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes={
-                    index === 0
-                      ? "(max-width: 1088px) 100vw, 1088px"
-                      : "(max-width: 640px) 100vw, 34rem"
-                  }
-                  className="object-cover"
-                />
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-6">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-brand-dark ring-1 ring-white/15">
+            <Image
+              src={current.src}
+              alt={current.alt}
+              fill
+              sizes="(max-width: 1088px) 100vw, 1088px"
+              className="object-cover"
+            />
+          </div>
+          <ul className="mt-3 flex gap-3 overflow-x-auto p-1">
+            {activity.images.map((image, index) => {
+              const active = index === selected;
+              return (
+                <li key={`${image.src}-${index}`} className="shrink-0">
+                  <button
+                    type="button"
+                    aria-pressed={active}
+                    aria-label={`Photo ${index + 1} of ${activity.images.length}`}
+                    onClick={() => setSelected(index)}
+                    className={`relative h-16 w-24 overflow-hidden rounded-xl ring-2 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                      active ? "ring-accent" : "ring-white/25 hover:ring-white/60"
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt=""
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </dialog>
     </article>
   );
