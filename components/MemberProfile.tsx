@@ -85,8 +85,8 @@ export function MemberProfileButton({
             />
           </svg>
         </button>
-        <div className="grid grid-cols-[8.5rem_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-8">
-          <span className="relative col-start-1 row-start-1 h-32 w-32 justify-self-center overflow-hidden rounded-full ring-4 ring-brand sm:h-44 sm:w-44">
+        <div className="flex flex-col gap-5 sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:items-center sm:gap-8">
+          <span className="relative mx-auto h-32 w-32 overflow-hidden rounded-full ring-4 ring-brand sm:col-start-1 sm:row-start-1 sm:mx-0 sm:h-44 sm:w-44 sm:justify-self-center">
             <Image
               src={member.photo}
               alt=""
@@ -95,7 +95,7 @@ export function MemberProfileButton({
               className="object-cover"
             />
           </span>
-          <div className="col-start-2 row-start-1 min-w-0 pr-12">
+          <div className="min-w-0 sm:col-start-2 sm:row-start-1 sm:pr-12">
             <p className="text-sm font-semibold tracking-wide text-brand">
               <span className="sr-only">Member ID </span>
               {member.id}
