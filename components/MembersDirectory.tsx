@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FormEvent, type MouseEvent } from "react";
 import { MemberCard } from "@/components/MemberCard";
 import { MemberSearch } from "@/components/MembersNameSearch";
@@ -142,20 +143,25 @@ function MemberSelf({
   );
 }
 
-export function MembersDirectory({
-  sort,
-  query,
-  memberId,
-}: {
-  sort: "az" | "za";
-  query: string;
-  memberId: string;
-}) {
+export function MembersDirectory() {
+  const params = useSearchParams();
+  const sort = params.get("sort") === "za" ? "za" : "az";
+  const query = params.get("q")?.trim() ?? "";
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
-  const [signedInId, setSignedInId] = useState(memberId);
+  const [signedInId, setSignedInId] = useState("");
   const [focusSelf, setFocusSelf] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const saved = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(`${MEMBER_COOKIE}=`))
+      ?.split("=")[1];
+    if (!saved) return;
+    const id = decodeURIComponent(saved);
+    if (members.some((member) => member.id === id)) setSignedInId(id);
+  }, []);
   const signedIn = members.find((member) => member.id === signedInId) ?? null;
   const visible = signedIn
     ? getMembers(sort, query)
