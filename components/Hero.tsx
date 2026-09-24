@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { publicSrc } from "@/lib/public-src";
 
 const notes = ["Member network", "New opportunities", "Real connections"];
 
@@ -62,7 +63,7 @@ export function Hero() {
           />
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-[0_28px_60px_-28px_rgba(0,18,66,0.9)]">
             <Image
-              src="/images/smash.jpg"
+              src={publicSrc("/images/smash.jpg")}
               alt="A badminton player jumping to hit a smash on an indoor court"
               fill
               priority

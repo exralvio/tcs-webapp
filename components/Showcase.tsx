@@ -1,31 +1,32 @@
 import Image from "next/image";
+import { publicSrc } from "@/lib/public-src";
 
 const activities = [
   {
     title: "Open play",
     caption: "Meet members and get into a game.",
-    src: "/images/open-play.jpg",
+    src: publicSrc("/images/open-play.jpg"),
     alt: "A player serving a shuttlecock while others wait for a game in a sports hall",
     position: "object-center",
   },
   {
     title: "Doubles night",
     caption: "Pair up and build a real partnership.",
-    src: "/images/doubles.jpg",
+    src: publicSrc("/images/doubles.jpg"),
     alt: "Two doubles players moving toward a shuttlecock at the net",
     position: "object-center",
   },
   {
     title: "Coaching",
     caption: "Sharpen your game and share what you know.",
-    src: "/images/coaching.jpg",
+    src: publicSrc("/images/coaching.jpg"),
     alt: "A mixed doubles pair setting up for a clear on a badminton court",
     position: "object-center",
   },
   {
     title: "First serve",
     caption: "New here? Start with one game and one conversation.",
-    src: "/images/shuttle.jpg",
+    src: publicSrc("/images/shuttle.jpg"),
     alt: "Close-up of a shuttlecock held beside a badminton racket",
     position: "object-center",
   },

@@ -1,3 +1,5 @@
+import { publicSrc } from "@/lib/public-src";
+
 export type ActivityImage = {
   src: string;
   alt: string;
@@ -17,19 +19,19 @@ export const activities: Activity[] = [
     date: "2026-09-16",
     images: [
       {
-        src: "/images/open-play.jpg",
+        src: publicSrc("/images/open-play.jpg"),
         alt: "A player serving a shuttlecock while others wait in a sports hall",
       },
       {
-        src: "/images/smash.jpg",
+        src: publicSrc("/images/smash.jpg"),
         alt: "A player jumping to hit a smash on an indoor court",
       },
       {
-        src: "/images/shuttle.jpg",
+        src: publicSrc("/images/shuttle.jpg"),
         alt: "A shuttlecock held beside a badminton racket",
       },
       {
-        src: "/images/activities/net.jpg",
+        src: publicSrc("/images/activities/net.jpg"),
         alt: "A shuttlecock resting on the strings of a badminton racket",
       },
     ],
@@ -40,15 +42,15 @@ export const activities: Activity[] = [
     date: "2026-09-09",
     images: [
       {
-        src: "/images/doubles.jpg",
+        src: publicSrc("/images/doubles.jpg"),
         alt: "Two doubles players moving toward a shuttlecock at the net",
       },
       {
-        src: "/images/coaching.jpg",
+        src: publicSrc("/images/coaching.jpg"),
         alt: "A mixed doubles pair setting up for a clear",
       },
       {
-        src: "/images/smash.jpg",
+        src: publicSrc("/images/smash.jpg"),
         alt: "A player jumping to hit a smash on an indoor court",
       },
     ],
@@ -59,15 +61,15 @@ export const activities: Activity[] = [
     date: "2026-09-02",
     images: [
       {
-        src: "/images/coaching.jpg",
+        src: publicSrc("/images/coaching.jpg"),
         alt: "A mixed doubles pair setting up for a clear",
       },
       {
-        src: "/images/open-play.jpg",
+        src: publicSrc("/images/open-play.jpg"),
         alt: "A player serving a shuttlecock while others wait in a sports hall",
       },
       {
-        src: "/images/shuttle.jpg",
+        src: publicSrc("/images/shuttle.jpg"),
         alt: "A shuttlecock held beside a badminton racket",
       },
     ],
@@ -78,15 +80,15 @@ export const activities: Activity[] = [
     date: "2026-08-26",
     images: [
       {
-        src: "/images/shuttle.jpg",
+        src: publicSrc("/images/shuttle.jpg"),
         alt: "A shuttlecock held beside a badminton racket",
       },
       {
-        src: "/images/activities/net.jpg",
+        src: publicSrc("/images/activities/net.jpg"),
         alt: "A shuttlecock resting on the strings of a badminton racket",
       },
       {
-        src: "/images/open-play.jpg",
+        src: publicSrc("/images/open-play.jpg"),
         alt: "A player serving a shuttlecock while others wait in a sports hall",
       },
     ],

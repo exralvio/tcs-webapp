@@ -1,3 +1,5 @@
+import { publicSrc } from "@/lib/public-src";
+
 export type Member = {
   id: string;
   photo: string;
@@ -29,7 +31,7 @@ export function membersHref(page: number, sort: "az" | "za", query = "") {
 export const members: Member[] = [
   {
     id: "TCS-1042",
-    photo: "/images/members/aisha-rahman.jpg",
+    photo: publicSrc("/images/members/aisha-rahman.jpg"),
     fullName: "Aisha Rahman",
     birthDate: "1992-03-12",
     age: 34,
@@ -45,7 +47,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1088",
-    photo: "/images/members/benito-cruz.jpg",
+    photo: publicSrc("/images/members/benito-cruz.jpg"),
     fullName: "Benito Cruz",
     birthDate: "1985-01-04",
     age: 41,
@@ -61,7 +63,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1114",
-    photo: "/images/members/chloe-tan.jpg",
+    photo: publicSrc("/images/members/chloe-tan.jpg"),
     fullName: "Chloe Tan",
     birthDate: "1997-01-20",
     age: 29,
@@ -77,7 +79,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1130",
-    photo: "/images/members/daniel-okonkwo.jpg",
+    photo: publicSrc("/images/members/daniel-okonkwo.jpg"),
     fullName: "Daniel Okonkwo",
     birthDate: "1988-08-02",
     age: 38,
@@ -93,7 +95,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1165",
-    photo: "/images/members/elena-vasquez.jpg",
+    photo: publicSrc("/images/members/elena-vasquez.jpg"),
     fullName: "Elena Vasquez",
     birthDate: "1994-06-15",
     age: 32,
@@ -109,7 +111,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1182",
-    photo: "/images/members/farah-ibrahim.jpg",
+    photo: publicSrc("/images/members/farah-ibrahim.jpg"),
     fullName: "Farah Ibrahim",
     birthDate: "1990-02-28",
     age: 36,
@@ -125,7 +127,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1207",
-    photo: "/images/members/gabriel-santos.jpg",
+    photo: publicSrc("/images/members/gabriel-santos.jpg"),
     fullName: "Gabriel Santos",
     birthDate: "1999-02-09",
     age: 27,
@@ -141,7 +143,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1221",
-    photo: "/images/members/hana-suzuki.jpg",
+    photo: publicSrc("/images/members/hana-suzuki.jpg"),
     fullName: "Hana Suzuki",
     birthDate: "1993-04-01",
     age: 33,
@@ -157,7 +159,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1244",
-    photo: "/images/members/ivan-petrov.jpg",
+    photo: publicSrc("/images/members/ivan-petrov.jpg"),
     fullName: "Ivan Petrov",
     birthDate: "1981-09-18",
     age: 45,
@@ -173,7 +175,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1270",
-    photo: "/images/members/julia-nguyen.jpg",
+    photo: publicSrc("/images/members/julia-nguyen.jpg"),
     fullName: "Julia Nguyen",
     birthDate: "1995-05-21",
     age: 31,
@@ -189,7 +191,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1296",
-    photo: "/images/members/kenji-watanabe.jpg",
+    photo: publicSrc("/images/members/kenji-watanabe.jpg"),
     fullName: "Kenji Watanabe",
     birthDate: "1998-04-22",
     age: 28,
@@ -205,7 +207,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1312",
-    photo: "/images/members/lila-mensah.jpg",
+    photo: publicSrc("/images/members/lila-mensah.jpg"),
     fullName: "Lila Mensah",
     birthDate: "1987-01-16",
     age: 39,
