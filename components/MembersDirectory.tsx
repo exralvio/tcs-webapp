@@ -101,6 +101,10 @@ function MemberSelf({
         }
       >
         <div>
+          <dt className="text-sm font-semibold">WhatsApp</dt>
+          <dd className="text-lg font-semibold text-brand-ink">{member.whatsapp}</dd>
+        </div>
+        <div>
           <dt className="text-sm font-semibold">Birthdate</dt>
           <dd className="text-lg font-semibold text-brand-ink">
             {formatBirthDate(member.birthDate)}
@@ -203,7 +207,7 @@ export function MembersDirectory() {
 
     const match = findMember(idInput.value, birthInput.value);
     if (!match) {
-      setError("That member ID and birthdate don't match.");
+      setError("That member ID or WhatsApp number and birthdate don't match.");
       return;
     }
 
@@ -322,37 +326,44 @@ export function MembersDirectory() {
               Join to access all members
             </h2>
             <p className="mt-2 text-base leading-relaxed">
-              Enter your member ID and birthdate.
+              Enter your member ID or WhatsApp number, and your birthdate.
             </p>
             <form onSubmit={onSubmit} className="mt-6 space-y-5">
               <div>
                 <label htmlFor="member-id" className="mb-2 block text-sm font-semibold">
-                  Member ID
+                  Member ID/Whatsapp Number
                 </label>
                 <input
                   id="member-id"
                   name="memberId"
                   type="text"
                   autoComplete="off"
-                  autoCapitalize="characters"
                   spellCheck={false}
                   required
-                  maxLength={20}
-                  placeholder="TCS-1042"
+                  maxLength={24}
+                  placeholder="TCS-1042 or 081211670042"
                   className="h-12 w-full rounded-xl border border-white/35 bg-brand-ink px-4 text-base text-white transition duration-200 outline-none placeholder:text-accent-soft focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 />
               </div>
               <div>
                 <label htmlFor="birthdate" className="mb-2 block text-sm font-semibold">
                   Birthdate
+                  <span className="ml-2 font-medium tracking-wide text-brand">YYYYMMDD</span>
                 </label>
                 <input
                   id="birthdate"
                   name="birthdate"
-                  type="date"
+                  type="text"
+                  inputMode="numeric"
                   autoComplete="bday"
+                  spellCheck={false}
                   required
-                  className="h-12 w-full rounded-xl border border-white/35 bg-brand-ink px-4 text-base text-white transition duration-200 outline-none [color-scheme:dark] focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  minLength={8}
+                  maxLength={8}
+                  pattern="[0-9]{8}"
+                  placeholder="19920312"
+                  title="Enter your birthdate as YYYYMMDD."
+                  className="h-12 w-full rounded-xl border border-white/35 bg-brand-ink px-4 text-base text-white transition duration-200 outline-none placeholder:text-accent-soft focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 />
               </div>
               {error ? (

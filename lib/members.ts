@@ -2,6 +2,7 @@ import { publicSrc } from "@/lib/public-src";
 
 export type Member = {
   id: string;
+  whatsapp: string;
   photo: string;
   fullName: string;
   birthDate: string;
@@ -31,6 +32,7 @@ export function membersHref(page: number, sort: "az" | "za", query = "") {
 export const members: Member[] = [
   {
     id: "TCS-1042",
+    whatsapp: "081211670042",
     photo: publicSrc("/images/members/aisha-rahman.jpg"),
     fullName: "Aisha Rahman",
     birthDate: "1992-03-12",
@@ -47,6 +49,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1088",
+    whatsapp: "081311670088",
     photo: publicSrc("/images/members/benito-cruz.jpg"),
     fullName: "Benito Cruz",
     birthDate: "1985-01-04",
@@ -63,6 +66,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1114",
+    whatsapp: "081411670114",
     photo: publicSrc("/images/members/chloe-tan.jpg"),
     fullName: "Chloe Tan",
     birthDate: "1997-01-20",
@@ -79,6 +83,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1130",
+    whatsapp: "081511670130",
     photo: publicSrc("/images/members/daniel-okonkwo.jpg"),
     fullName: "Daniel Okonkwo",
     birthDate: "1988-08-02",
@@ -95,6 +100,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1165",
+    whatsapp: "081611670165",
     photo: publicSrc("/images/members/elena-vasquez.jpg"),
     fullName: "Elena Vasquez",
     birthDate: "1994-06-15",
@@ -111,6 +117,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1182",
+    whatsapp: "081711670182",
     photo: publicSrc("/images/members/farah-ibrahim.jpg"),
     fullName: "Farah Ibrahim",
     birthDate: "1990-02-28",
@@ -127,6 +134,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1207",
+    whatsapp: "081811670207",
     photo: publicSrc("/images/members/gabriel-santos.jpg"),
     fullName: "Gabriel Santos",
     birthDate: "1999-02-09",
@@ -143,6 +151,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1221",
+    whatsapp: "081911670221",
     photo: publicSrc("/images/members/hana-suzuki.jpg"),
     fullName: "Hana Suzuki",
     birthDate: "1993-04-01",
@@ -159,6 +168,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1244",
+    whatsapp: "082111670244",
     photo: publicSrc("/images/members/ivan-petrov.jpg"),
     fullName: "Ivan Petrov",
     birthDate: "1981-09-18",
@@ -175,6 +185,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1270",
+    whatsapp: "082211670270",
     photo: publicSrc("/images/members/julia-nguyen.jpg"),
     fullName: "Julia Nguyen",
     birthDate: "1995-05-21",
@@ -191,6 +202,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1296",
+    whatsapp: "082311670296",
     photo: publicSrc("/images/members/kenji-watanabe.jpg"),
     fullName: "Kenji Watanabe",
     birthDate: "1998-04-22",
@@ -207,6 +219,7 @@ export const members: Member[] = [
   },
   {
     id: "TCS-1312",
+    whatsapp: "082411670312",
     photo: publicSrc("/images/members/lila-mensah.jpg"),
     fullName: "Lila Mensah",
     birthDate: "1987-01-16",
@@ -248,9 +261,29 @@ export function formatBirthDate(isoDate: string) {
   return `${Number(day)} ${months[Number(month) - 1]} ${year}`;
 }
 
-export function findMember(memberId: string, birthDate: string) {
-  const id = memberId.trim().toLocaleUpperCase();
-  return members.find((member) => member.id === id && member.birthDate === birthDate);
+function normalizeBirthDate(value: string) {
+  const digits = value.trim();
+  if (/^\d{8}$/.test(digits)) {
+    return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
+  }
+  return digits;
+}
+
+function phoneDigits(value: string) {
+  let digits = value.replace(/\D/g, "");
+  if (digits.startsWith("62")) digits = `0${digits.slice(2)}`;
+  return digits;
+}
+
+export function findMember(login: string, birthDate: string) {
+  const id = login.trim().toLocaleUpperCase();
+  const phone = phoneDigits(login);
+  const birth = normalizeBirthDate(birthDate);
+  return members.find((member) => {
+    if (member.birthDate !== birth) return false;
+    if (member.id === id) return true;
+    return phone.length > 0 && phoneDigits(member.whatsapp) === phone;
+  });
 }
 
 function timeAgo(amount: number, unit: string) {

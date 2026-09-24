@@ -77,8 +77,8 @@ export function RegisterForm() {
             required
             minLength={8}
             maxLength={20}
-            placeholder="+62 812 3456 7890"
-            title="Enter a WhatsApp number, including the country code."
+            placeholder="083821670646"
+            title="Enter a WhatsApp number starting with 0."
             className="h-12 w-full rounded-xl border border-white/35 bg-brand-ink px-4 text-base text-white transition duration-200 outline-none placeholder:text-accent-soft focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           />
         </div>
